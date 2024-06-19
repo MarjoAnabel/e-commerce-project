@@ -1,0 +1,1 @@
+const {Category, Product} = require ('../models/index')
