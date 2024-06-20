@@ -1,4 +1,4 @@
-const {Product, Category} = require ('../models/index')
+const {Product,Category} = require ('../models/index')
 
 const ProductController = {
 
@@ -10,14 +10,6 @@ const ProductController = {
         )
         .catch ((err)=> console.error (err))
     },
-
-
-
-
-
-
-
-
 
 }
 

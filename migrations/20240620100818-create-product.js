@@ -9,9 +9,6 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      id: {
-        type: Sequelize.INTEGER
-      },
       name: {
         type: Sequelize.STRING
       },
@@ -19,12 +16,12 @@ module.exports = {
         type: Sequelize.STRING
       },
       price: {
-        type: Sequelize.DOUBLE
+        type: Sequelize.INTEGER
       },
       stock: {
         type: Sequelize.INTEGER
       },
-      Categoryid: {
+      id_category: {
         type: Sequelize.INTEGER
       },
       createdAt: {
