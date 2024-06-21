@@ -3,7 +3,7 @@ const { Op } = Sequelize
 
 const CategoryController = {
   create(req, res) {
-  Post.create(req.body)
+  Category.create(req.body)
       .then((category) =>
       res.status(201).send({ message: 'Categoría creada con éxito', category })
       )
@@ -38,15 +38,16 @@ const CategoryController = {
     }).then((post) => res.send(post))
   },
 
-  // Endpoint para actualizar
-  update(req,res){
-    /* Category.findByPk(req.params.id, {
-      include: [{ model: Category, attributes: ['id'] }],
-    }).then((post) => res.send(post)) */
+  async update(req, res) {
+    await Category.update(
+      { name: req.body.name },
+      { where: { id: req.params.id } }
+    )
+    res.send('Categoría actualizada con éxito')
   },
-
+  
   async delete(req, res) {
-    await Post.destroy({
+    await Category.destroy({
       where: {
         id: req.params.id,
       },
