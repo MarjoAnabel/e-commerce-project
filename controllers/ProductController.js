@@ -1,7 +1,8 @@
-//const {Product,Category} = require('../models/index.js')
+const {Product,Category,Sequelize} = require('../models/index.js')
+const { Op } = Sequelize
 
 const ProductController = {
-    create (re,res) {
+    create (req,res) {
         req.body.role = 'product'
         Product.create (req.body)
         .then ((product) =>
@@ -29,7 +30,7 @@ const ProductController = {
 
     getAll(req, res) {
      Product.findAll({include: [Category]})
-        .then((product) => res.send(category)) // Hay que descomentar la primera linea para que resalte product
+        .then((product) => res.send(category))
         .catch((err) => {
         console.log(err)
         res.status(500).send({

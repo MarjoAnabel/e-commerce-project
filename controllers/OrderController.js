@@ -1,4 +1,4 @@
-//const {Order,Product} = require('../models/index.js')
+const {Order,Product} = require('../models/index.js')
 
 const OrderController = {
     create (re,res) {
