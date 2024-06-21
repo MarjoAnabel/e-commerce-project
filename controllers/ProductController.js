@@ -1,4 +1,4 @@
-const {Product,Category} = require ('../models/index')
+const {Product, Category} = require ('../models/index')
 
 const ProductController = {
 
