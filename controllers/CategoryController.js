@@ -39,11 +39,11 @@ const CategoryController = {
   },
 
   async update(req, res) {
-    await Category.update(
+   /*  await Category.update(
       { name: req.body.name },
       { where: { id: req.params.id } }
     )
-    res.send('Categoría actualizada con éxito')
+    res.send('Categoría actualizada con éxito') */
   },
   
   async delete(req, res) {
