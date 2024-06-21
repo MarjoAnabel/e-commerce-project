@@ -15,21 +15,33 @@ module.exports = {
     return queryInterface.bulkInsert('Categories', [
         {
           name: 'Nike',
+          createdAt: new Date(),
+          updatedAt: new Date(),
         },
         {
           name: 'Adidas',
+          createdAt: new Date(),
+          updatedAt: new Date(),
         },
         {
           name: 'Puma',
+          createdAt: new Date(),
+          updatedAt: new Date(),
         },
         {
           name: 'New Balance',
+          createdAt: new Date(),
+          updatedAt: new Date(),
         },
         {
           name: 'Reebok',
+          createdAt: new Date(),
+          updatedAt: new Date(),
         },
         {
           name: 'Vans Off The Wall',
+          createdAt: new Date(),
+          updatedAt: new Date(),
         }
       ])
   },
