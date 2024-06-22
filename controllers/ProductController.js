@@ -30,7 +30,7 @@ const ProductController = {
 
     getAll(req, res) {
      Product.findAll({include: [Category]})
-        .then((product) => res.send(category))
+        .then((products) => res.send(products))
         .catch((err) => {
         console.log(err)
         res.status(500).send({
@@ -53,7 +53,7 @@ const ProductController = {
             },
           },
           include: [Product],
-        }).then((product) => res.send(post))
+        }).then((product) => res.send(product))
     },
 
     getByPrice(req, res) {
@@ -64,7 +64,7 @@ const ProductController = {
             },
           },
           include: [Product],
-        }).then((product) => res.send(post))
+        }).then((product) => res.send(product))
         .catch((err) => res.status(500).send(err));
     },
 
@@ -77,7 +77,7 @@ const ProductController = {
           },
           include: [Product],
           order: [['price', 'DESC']] //Ordena los resultados de mayor a menor
-        }).then((product) => res.send(post))
+        }).then((product) => res.send(product))
         .catch((err) => res.status(500).send(err));
     },
 

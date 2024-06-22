@@ -39,11 +39,15 @@ const CategoryController = {
   },
 
   async update(req, res) {
-    await Category.update(
-      { name: req.body.name },
-      { where: { id: req.params.id } }
-    )
-    res.send('Categoría actualizada con éxito')
+    try {
+      await Category.update(req.body, {
+        where: { id: req.params.id }
+      })
+      res.send('Libro actualizado con éxito')
+    } catch (error) {
+      console.error(error)
+      res.status(500).send({ message: 'no ha sido posible actualizar la categoría' })
+    }
   },
   
   async delete(req, res) {
