@@ -5,9 +5,10 @@ const ProductController = {
     create (req,res) {
         req.body.role = 'product'
         Product.create (req.body)
-        .then ((product) =>
+        .then ((product) => {
+          product.addOrder(req.body.OrderId)
             res.status(201).send ({message:"Producto creado", product})
-        )
+        })
         .catch ((err)=> console.error (err))
     },
 
