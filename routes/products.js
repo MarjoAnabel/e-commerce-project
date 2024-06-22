@@ -10,7 +10,7 @@ router.get ('/', ProductController.getAll)
 router.get ('/id/:id', ProductController.getById)
 router.get ('/name/:name', ProductController.getOneByName)
 router.get ('/price/:price', ProductController.getByPrice)
-router.get ('/pricedesc/:price', ProductController.getByPriceDesc)
+router.get ('/pricedesc', ProductController.getByPriceDesc)
 router.post ('/productvali',ProductController.createtwo)
 
 

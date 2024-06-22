@@ -52,7 +52,7 @@ const ProductController = {
               [Op.like]: `%${req.params.name}%`,
             },
           },
-          include: [Product],
+          include: [Category],
         }).then((product) => res.send(product))
     },
 
@@ -63,22 +63,21 @@ const ProductController = {
              [Op.like]: `%${req.params.price}%`,
             },
           },
-          include: [Product],
+          include: [Category],
         }).then((product) => res.send(product))
         .catch((err) => res.status(500).send(err));
     },
 
       getByPriceDesc(req, res) {
-        Product.findAll({ //Obtiene todos los registros
-          where: {
-            price: {
-              [Op.like]: `%${req.params.price}%`,
-            },
-          },
-          include: [Product],
-          order: [['price', 'DESC']] //Ordena los resultados de mayor a menor
-        }).then((product) => res.send(product))
-        .catch((err) => res.status(500).send(err));
+        Product.findAll({include: [Category],
+          order: [['name', 'DESC']]}        )
+        .then((products) => res.send(products))
+        .catch((err) => {
+        console.log(err)
+        res.status(500).send({
+             message: 'Ha habido un problema al cargar los productos',
+            })
+        })
     },
 
       createtwo(req, res) {

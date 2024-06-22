@@ -21,7 +21,7 @@ module.exports = {
       stock: {
         type: Sequelize.INTEGER
       },
-      id_category: {
+      CategoryId: {
         type: Sequelize.INTEGER
       },
       createdAt: {
