@@ -14,4 +14,6 @@ router.get ('/pricedesc', ProductController.getByPriceDesc)
 router.post ('/productvali',ProductController.createtwo)
 
 
+
+
 module.exports = router
