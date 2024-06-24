@@ -16,7 +16,17 @@ module.exports = (sequelize, DataTypes) => {
   User.init({
     name: DataTypes.STRING,
     surname: DataTypes.STRING,
-    dni: DataTypes.STRING,
+    dni: {
+      type: DataTypes.STRING,
+      allowNull:false,
+      validate:{
+        notNull: { msg: 'Por favor introduce dni'},
+        is: {
+          args: /^[0-9]{8}[A-Z]$/,
+          msg: 'Introduce un dni válido'
+        },
+      }
+    },
     address: DataTypes.STRING,
     password: DataTypes.STRING
   }, {
@@ -25,3 +35,15 @@ module.exports = (sequelize, DataTypes) => {
   });
   return User;
 };
+
+
+  // email: {
+  //   type: DataTypes.STRING,
+  //   allowNull: false,
+  //   validate: {
+  //     notNull: { msg: 'Por favor introduce tu correo'},
+  //     isEmail: { msg: 'Por favor introduce un correo valido' },
+  //   },
+  // }
+ 
+ 
