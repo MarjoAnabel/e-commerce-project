@@ -10,16 +10,6 @@ const CategoryController = {
       .catch(console.error)
   },
 
- /*  getAll(req, res) {
-    Category.findAll({ include: [Product] })
-    .then((categories) => res.send(categories))
-    .catch((err) => {
-        console.log(err)
-        res.status(500).send({
-            message: 'Ha habido un problema al cargar las categorías',
-        })
-    })
-  },  */
   getAll(req, res) {
     Category.findAll({
       include: {
