@@ -16,6 +16,7 @@
     "bcryptjs": "^2.4.3",
     "express": "^4.19.2",
     "mysql2": "^3.10.1",
-    "sequelize": "^6.37.3"
+    "sequelize": "^6.37.3",
+    "sequelizer": "^1.1.4"
   }
 }
