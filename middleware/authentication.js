@@ -20,6 +20,7 @@ const authentication = async (req, res, next) => {
       console.log(error)
       res.status(500).send({ error, message: 'Ha habido un problema con el token' })
     }
+  }
 
     const isAdmin = async (req, res, next) => {
       const admins = ['admin', 'superadmin']
@@ -31,7 +32,6 @@ const authentication = async (req, res, next) => {
       next()
      }
      
-   }
 
    module.exports = { authentication, isAdmin }
 
