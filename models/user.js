@@ -14,8 +14,20 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   User.init({
-    name: DataTypes.STRING,
-    surname: DataTypes.STRING,
+    name: {
+      type: DataTypes.STRING,
+      allowNull:false,
+      validate:{
+        notNull: { msg: 'Por favor introduce nombre'}
+      }
+    },
+    surname: {
+      type: DataTypes.STRING,
+      allowNull:false,
+      validate:{
+        notNull: { msg: 'Por favor introduce apellid'}
+      }
+    },
     dni: {
       type: DataTypes.STRING,
       allowNull:false,
@@ -27,7 +39,13 @@ module.exports = (sequelize, DataTypes) => {
         },
       }
     },
-    address: DataTypes.STRING,
+    address: {
+      type: DataTypes.STRING,
+      allowNull:false,
+      validate:{
+        notNull: { msg: 'Por favor introduce dirección'}
+      }
+    },
     password: DataTypes.STRING
   }, {
     sequelize,

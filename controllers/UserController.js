@@ -24,6 +24,14 @@ const UserController = {
           res.send(user)
         })
       }
+      // ,
+      
+      // Endpoint que nos traiga la información del usuario conectado junto a los pedidos que 
+      // tiene y los productos que contiene cada pedido
+
+      // getHistoryOf(req,res){
+
+      // }
 }
 
 module.exports = UserController
