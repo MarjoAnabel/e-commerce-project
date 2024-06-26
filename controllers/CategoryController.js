@@ -11,31 +11,47 @@ const CategoryController = {
   },
 
   getAll(req, res) {
-    Category.findAll({ include: [Product] })
+    Category.findAll({
+      include: {
+        model: Product
+      }
+    })
     .then((categories) => res.send(categories))
     .catch((err) => {
-        console.log(err)
-        res.status(500).send({
-            message: 'Ha habido un problema al cargar las categorías',
-        })
-    })
-  }, 
+      console.error('Error al cargar las categorías:', err);
+      res.status(500).send({
+        message: 'Ha habido un problema al cargar las categorías',
+        error: err.message
+      });
+    });
+  },
   
   getById(req, res) {
-      Category.findByPk(req.params.id, {
-        include: [{ model: Category, attributes: ['id'] }],
-      }).then((post) => res.send(post))
+    Category.findByPk(req.params.id)
+      .then((category) => {
+        if (category) {
+          res.send(category);
+        } else {
+          res.status(404).send({ message: 'Categoría no encontrada' });
+        }
+      })
+      .catch((err) => {
+        res.status(500).send({
+          message: 'Ha habido un problema al buscar la categoría',
+          error: err.message
+        })
+      })
   },
-
+  
   getOneByName(req, res) {
     Category.findOne({
       where: {
-        title: {
-          [Op.like]: `%${req.params.title}%`,
+        name: {
+          [Op.like]: `%${req.params.name}%`,
         },
       },
-      include: [User],
-    }).then((post) => res.send(post))
+      include: [Product],
+    }).then((category) => res.send(category))
   },
 
   async update(req, res) {
@@ -43,7 +59,7 @@ const CategoryController = {
       await Category.update(req.body, {
         where: { id: req.params.id }
       })
-      res.send('Libro actualizado con éxito')
+      res.send('Categoría actualizada con éxito')
     } catch (error) {
       console.error(error)
       res.status(500).send({ message: 'no ha sido posible actualizar la categoría' })
