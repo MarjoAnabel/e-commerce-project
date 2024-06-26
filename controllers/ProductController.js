@@ -4,7 +4,7 @@ const { Op } = Sequelize
 const ProductController = {
     create (req,res) {
         req.body.role = 'product'
-        Product.create (req.body)
+        Product.create ({...req.body,dni:res.user.dni})
         .then ((product) => {
           product.addOrder(req.body.OrderId)
             res.status(201).send ({message:"Producto creado", product})
@@ -95,9 +95,7 @@ const ProductController = {
                 console.error(err);
                 res.status(500).send('Error al crear el producto');
             });
-    },
-
-//Solo podrás crear, actualizar y eliminar productos si estás autenticado.
+    }
 }
      
 module.exports = ProductController

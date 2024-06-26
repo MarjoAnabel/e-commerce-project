@@ -1,6 +1,7 @@
-const { User } = require('../models/index.js')
-
+const { User, Token } = require('../models/index.js')
 const bcrypt = require('bcryptjs')
+const jwt = require('jsonwebtoken')
+const { jwt_secret } = require('../config/config.json')['development']
 
 const UserController = {
     create(req, res) {
@@ -21,9 +22,31 @@ const UserController = {
           if (!isMatch) {
             return res.status(400).send({ message: 'Usuario o contraseña incorrectos' })
           }
-          res.send(user)
+          const token = jwt.sing({dni: dni}, jwt_secret)
+          Token.create ({token, dni:user.dni})
+          res.send({menssage:'Bienvenid@' + user.name})
         })
+      },
+
+      async logout(req, res) {
+        try {
+          await Token.destroy({
+            where: {
+              [Op.and]: [
+                { dni: req.body.dni  }, 
+                { token: req.headers.authorization },
+              ],
+            },
+          })
+          res.send({ message: 'Desconectado con éxito' })
+        } catch (error) {
+          console.log(error)
+          res.status(500).send({ message: 'hubo un problema al tratar de desconectarte' })
+        }
       }
+
+
+
       // ,
       
       // Endpoint que nos traiga la información del usuario conectado junto a los pedidos que 
