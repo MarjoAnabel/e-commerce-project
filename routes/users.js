@@ -3,8 +3,8 @@ const router = express.Router()
 const UserController = require('../controllers/UserController')
 
 
-router.post ('/password/:password', UserController.create)
+router.post ('/', UserController.create)
 router.post ('/dni/password/:dni/:password', UserController.login)
-// router.post ('/', UserController.getHistoryOf)
+router.get ('/dni/:dni', UserController.getHistoryOf)
 
 module.exports = router

@@ -1,4 +1,5 @@
-const { User } = require('../models/index.js')
+const { User , Order , Product , Sequelize} = require('../models/index.js')
+const { Op } = Sequelize
 
 const bcrypt = require('bcryptjs')
 
@@ -23,15 +24,29 @@ const UserController = {
           }
           res.send(user)
         })
+      },
+
+      getHistoryOf(req,res){
+        User.findOne({
+          where: {
+            name: {
+              [Op.like]: `%${req.params.dni}%`,
+            },
+          },
+          include: [
+            {
+              model: Order,
+              include: [Product]
+            }
+          ]
+        })
+        .then((user) => {
+          if (!user) {
+              return res.status(404).send({ message: 'Usuario no encontrado' });
+          }
+          res.send(user);
+        })
       }
-      // ,
-      
-      // Endpoint que nos traiga la información del usuario conectado junto a los pedidos que 
-      // tiene y los productos que contiene cada pedido
-
-      // getHistoryOf(req,res){
-
-      // }
 }
 
 module.exports = UserController

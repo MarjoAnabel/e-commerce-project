@@ -20,7 +20,23 @@ const OrderController = {
           console.error(error)
         }
       },
-     
+
+    getById(req, res) {
+      Order.findByPk(req.params.id)
+      .then((order) => {
+        if (order) {
+          res.send(order);
+        } else {
+          res.status(404).send({ message: 'Pedido no encontrado' });
+        }
+      })
+      .catch((err) => {
+        res.status(500).send({
+          message: 'Ha habido un problema al buscar el pedido',
+          error: err.message
+        })
+      })
+    }
 }
 
 module.exports = OrderController
