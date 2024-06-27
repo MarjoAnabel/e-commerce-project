@@ -1,7 +1,9 @@
-const { User , Order , Product , Sequelize} = require('../models/index.js')
+const { User , Order , Product , Sequelize, Token} = require('../models/index.js')
 const { Op } = Sequelize
 
 const bcrypt = require('bcryptjs')
+const jwt = require('jsonwebtoken')
+const { jwt_secret } = require('../config/config.json')['development']
 
 const UserController = {
     create(req, res) {
@@ -22,7 +24,9 @@ const UserController = {
           if (!isMatch) {
             return res.status(400).send({ message: 'Usuario o contraseña incorrectos' })
           }
-          res.send(user)
+          const token = jwt.sign({id:user.dni}, jwt_secret)
+          Token.create ({token, UserId:user.id})
+          res.send({menssage:'Bienvenid@ ' + user.name})
         })
       },
 
@@ -46,6 +50,23 @@ const UserController = {
           }
           res.send(user);
         })
+      },
+
+      async logout(req, res) {
+        try {
+          await Token.destroy({
+            where: {
+              [Op.and]: [
+                { UserId: req.body.id  }, 
+                { token: req.headers.authorization },
+              ],
+            },
+          })
+          res.send({ message: 'Desconectado con éxito' })
+        } catch (error) {
+          console.log(error)
+          res.status(500).send({ message: 'hubo un problema al tratar de desconectarte' })
+        }
       }
 }
 
