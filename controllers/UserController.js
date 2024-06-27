@@ -22,9 +22,9 @@ const UserController = {
           if (!isMatch) {
             return res.status(400).send({ message: 'Usuario o contraseña incorrectos' })
           }
-          const token = jwt.sing({dni: dni}, jwt_secret)
-          Token.create ({token, dni:user.dni})
-          res.send({menssage:'Bienvenid@' + user.name})
+          const token = jwt.sign({id:user.dni}, jwt_secret)
+          Token.create ({token, UserId:user.id})
+          res.send({menssage:'Bienvenid@ ' + user.name})
         })
       },
 
@@ -33,7 +33,7 @@ const UserController = {
           await Token.destroy({
             where: {
               [Op.and]: [
-                { dni: req.body.dni  }, 
+                { UserId: req.body.id  }, 
                 { token: req.headers.authorization },
               ],
             },
