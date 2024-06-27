@@ -12,7 +12,7 @@ module.exports = {
      *   isBetaMember: false
      * }], {});
     */
-    return queryInterface.bulkInsert('Users', [
+   /*  return queryInterface.bulkInsert('Users', [
       {
         name: 'Paloma',
         surname: 'Hurtado',
@@ -67,8 +67,8 @@ module.exports = {
         createdAt: new Date(),
         updatedAt: new Date(),
       },
-     ])
-  },
+     ])*/
+  }, 
 
   async down (queryInterface, Sequelize) {
     /**
