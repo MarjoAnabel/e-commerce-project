@@ -16,7 +16,7 @@ const UserController = {
           .catch((err) => console.error(err))
       },
       login(req, res) {
-        User.findOne({ where: { UserId: req.body.id } }).then((user) => {
+        User.findOne({ where: { id: req.body.id } }).then((user) => {
           if (!user) {
             return res.status(400).send({ message: 'Usuario o contraseña incorrectos' })
           }
@@ -24,7 +24,7 @@ const UserController = {
           if (!isMatch) {
             return res.status(400).send({ message: 'Usuario o contraseña incorrectos' })
           }
-          const token = jwt.sign({id:user.dni}, jwt_secret)
+          const token = jwt.sign({id:user.id}, jwt_secret)
           Token.create ({token, UserId:user.id})
           res.send({menssage:'Bienvenid@ ' + user.name})
         })
