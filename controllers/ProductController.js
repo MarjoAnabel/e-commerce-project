@@ -4,7 +4,7 @@ const { Op } = Sequelize
 const ProductController = {
     create (req,res) {
         req.body.role = 'product'
-        Product.create ({...req.body, UserId:req.user.id})
+        Product.create ({...req.body, id:req.user.id})
         .then ((product) => {
           product.addOrder(req.body.OrderId)
             res.status(201).send ({message:"Producto creado", product})
