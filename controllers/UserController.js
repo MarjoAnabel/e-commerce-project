@@ -16,7 +16,7 @@ const UserController = {
           .catch((err) => console.error(err))
       },
       login(req, res) {
-        User.findOne({ where: { dni: req.body.dni } }).then((user) => {
+        User.findOne({ where: { UserId: req.body.id } }).then((user) => {
           if (!user) {
             return res.status(400).send({ message: 'Usuario o contraseña incorrectos' })
           }
