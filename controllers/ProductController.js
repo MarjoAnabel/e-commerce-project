@@ -17,7 +17,7 @@ const ProductController = {
               console.error(err);
               res.status(500).send('Error al crear el producto');
           });
-  },
+    },
 
     async update(req, res) {
         await Product.update(
@@ -25,15 +25,15 @@ const ProductController = {
         { where: { id: req.params.id } }
         )
         res.send('Producto actualizado con éxito')
-     },
+    },
 
-        async delete(req, res) {
-            await Product.destroy({
-            where: {
-                id: req.params.id,
-            },
-         })
-            res.send('El producto ha sido eliminado con éxito')
+    async delete(req, res) {
+        await Product.destroy({
+        where: {
+            id: req.params.id,
+        },
+      })
+        res.send('El producto ha sido eliminado con éxito')
     },
 
     getAll(req, res) {
@@ -76,16 +76,16 @@ const ProductController = {
         .catch((err) => res.status(500).send(err));
     },
 
-      getByPriceDesc(req, res) {
-        Product.findAll({include: [Category],
-          order: [['price', 'DESC']]}        )
-        .then((products) => res.send(products))
-        .catch((err) => {
-        console.log(err)
-        res.status(500).send({
-             message: 'Ha habido un problema al cargar los productos',
-            })
-        })
+    getByPriceDesc(req, res) {
+      Product.findAll({include: [Category],
+        order: [['price', 'DESC']]}        )
+      .then((products) => res.send(products))
+      .catch((err) => {
+      console.log(err)
+      res.status(500).send({
+            message: 'Ha habido un problema al cargar los productos',
+          })
+      })
     }
 }
      
