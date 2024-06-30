@@ -2,15 +2,22 @@ const {Product,Category,Sequelize} = require('../models/index.js')
 const { Op } = Sequelize
 
 const ProductController = {
-    create (req,res) {
-        req.body.role = 'product'
-        Product.create ({...req.body, UserId:req.user.id})
-        .then ((product) => {
-          product.addOrder(req.body.OrderId)
-            res.status(201).send ({message:"Producto creado", product})
-        })
-        .catch ((err)=> console.error (err))
-    },
+
+    create(req, res) {
+      const { name, description, price, stock, CategoryId} = req.body;
+      if (!name || !description || !price || !stock || !CategoryId) {
+          return res.status(400).send('Error: Falta algún campo por rellenar');
+      }
+      req.body.role = 'product';
+      Product.create(req.body)
+          .then((product) =>
+              res.status(201).send({ message: "Producto creado", product })
+          )
+          .catch((err) => {
+              console.error(err);
+              res.status(500).send('Error al crear el producto');
+          });
+  },
 
     async update(req, res) {
         await Product.update(
@@ -71,7 +78,7 @@ const ProductController = {
 
       getByPriceDesc(req, res) {
         Product.findAll({include: [Category],
-          order: [['name', 'DESC']]}        )
+          order: [['price', 'DESC']]}        )
         .then((products) => res.send(products))
         .catch((err) => {
         console.log(err)
@@ -79,22 +86,6 @@ const ProductController = {
              message: 'Ha habido un problema al cargar los productos',
             })
         })
-    },
-
-      createtwo(req, res) {
-        const { name, description, price, stock, id_category} = req.body;
-        if (!name || !description || !price || !stock || !id_category) {
-            return res.status(400).send('Error: Falta algún campo por rellenar');
-        }
-        req.body.role = 'product';
-        Product.create(req.body)
-            .then((product) =>
-                res.status(201).send({ message: "Producto creado", product })
-            )
-            .catch((err) => {
-                console.error(err);
-                res.status(500).send('Error al crear el producto');
-            });
     }
 }
      
