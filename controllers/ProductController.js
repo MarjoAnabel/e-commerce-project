@@ -1,4 +1,5 @@
-const {Product,Category,Sequelize} = require('../models/index.js')
+const { where } = require('sequelize');
+const {Product,Category,Review,User,Sequelize} = require('../models/index.js')
 const { Op } = Sequelize
 
 const ProductController = {
@@ -17,14 +18,6 @@ const ProductController = {
               console.error(err);
               res.status(500).send('Error al crear el producto');
           });
-    create (req,res) {
-        req.body.role = 'product'
-        Product.create ({...req.body, id:req.user.id})
-        .then ((product) => {
-          product.addOrder(req.body.OrderId)
-            res.status(201).send ({message:"Producto creado", product})
-        })
-        .catch ((err)=> console.error (err))
     },
 
     async update(req, res) {
@@ -45,15 +38,44 @@ const ProductController = {
     },
 
     getAll(req, res) {
-     Product.findAll({include: [Category]})
-        .then((products) => res.send(products))
-        .catch((err) => {
-        console.log(err)
-        res.status(500).send({
-             message: 'Ha habido un problema al cargar los productos',
-            })
+     Product.findAll ({include: [
+      { model: Category },
+      { 
+        model: Review,
+        include: [User]
+      }
+    ]
+      })
+      .then((products) => res.send(products))
+      .catch((err) => {
+      console.log(err)
+      res.status(500).send({
+          message: 'Ha habido un problema al cargar los productos',
         })
+      })
     },
+
+
+    getAllbyid(req, res) {
+      Product.findOne ({
+        where: {id: req.params.id},
+      include: [
+       { model: Category },
+       { 
+         model: Review,
+         include: [User]
+       }
+     ]
+       })
+       .then((products) => res.send(products))
+       .catch((err) => {
+       console.log(err)
+       res.status(500).send({
+           message: 'Ha habido un problema al cargar los productos',
+         })
+       })
+     },
+     
 
     getById(req, res) {
         Product.findByPk(req.params.id, {
