@@ -22,8 +22,8 @@ const CategoryController = {
       res.status(500).send({
         message: 'Ha habido un problema al cargar las categorías',
         error: err.message
-      });
-    });
+      })
+    })
   },
   
   getById(req, res) {

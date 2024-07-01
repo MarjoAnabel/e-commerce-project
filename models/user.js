@@ -10,6 +10,7 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
+      // define association here
       User.hasMany(models.Order)
     }
   }
@@ -33,10 +34,6 @@ module.exports = (sequelize, DataTypes) => {
       allowNull:false,
       validate:{
         notNull: { msg: 'Por favor introduce dni'},
-        is: {
-          args: /^[0-9]{8}[A-Z]$/,
-          msg: 'Introduce un dni válido'
-        },
       }
     },
     address: {
@@ -46,22 +43,11 @@ module.exports = (sequelize, DataTypes) => {
         notNull: { msg: 'Por favor introduce dirección'}
       }
     },
-    password: DataTypes.STRING
+    password: DataTypes.STRING,
+    role: DataTypes.BOOLEAN
   }, {
     sequelize,
     modelName: 'User',
   });
   return User;
 };
-
-
-  // email: {
-  //   type: DataTypes.STRING,
-  //   allowNull: false,
-  //   validate: {
-  //     notNull: { msg: 'Por favor introduce tu correo'},
-  //     isEmail: { msg: 'Por favor introduce un correo valido' },
-  //   },
-  // }
- 
- 
