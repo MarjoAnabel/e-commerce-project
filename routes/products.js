@@ -8,7 +8,7 @@ router.put ('/id/:id',authentication,isAdmin,ProductController.update)
 router.delete ('id/:id',authentication,isAdmin,ProductController.delete)
 
 router.get('/', ProductController.getAll)
-router.get ('productid/id/:id',ProductController.getAllbyid)
+router.get ('/productid/id/:id', ProductController.getAllbyid)
 router.get ('/id/:id', ProductController.getById)
 router.get ('/name/:name', ProductController.getOneByName)
 router.get ('/price/:price', ProductController.getByPrice)
