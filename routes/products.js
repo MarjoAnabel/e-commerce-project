@@ -5,7 +5,7 @@ const { authentication, isAdmin} = require('../middleware/authentication')
 
 router.post ('/', authentication,isAdmin,ProductController.create) 
 router.put ('/id/:id',authentication,isAdmin,ProductController.update)
-router.delete ('id/:id',authentication,isAdmin,ProductController.delete)
+router.delete ('/id/:id',authentication,isAdmin,ProductController.delete)
 
 router.get('/', ProductController.getAll)
 router.get ('/productid/id/:id', ProductController.getAllbyid)

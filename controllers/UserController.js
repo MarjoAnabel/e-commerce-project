@@ -7,7 +7,7 @@ const { jwt_secret } = require('../config/config.json')['development']
 
 const UserController = {
     create(req, res) {
-        req.body.role = 'user'
+        // req.body.role = 'user'
         const password = bcrypt.hashSync(req.body.password, 10)
         User.create({ ...req.body, password: password })
         .then((user) =>

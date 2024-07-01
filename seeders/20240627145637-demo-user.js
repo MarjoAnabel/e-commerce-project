@@ -46,6 +46,7 @@ module.exports = {
         dni: '23456792J',
         address: 'c. Desengaño 21',
         password: '1234',
+        role: 'admin',
         createdAt: new Date(),
         updatedAt: new Date(),
       },
