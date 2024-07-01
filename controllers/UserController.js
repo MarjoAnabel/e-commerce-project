@@ -10,11 +10,12 @@ const UserController = {
         req.body.role = 'user'
         const password = bcrypt.hashSync(req.body.password, 10)
         User.create({ ...req.body, password: password })
-          .then((user) =>
-            res.status(201).send({ message: 'Usuario creado con éxito', user })
-          )
-          .catch((err) => console.error(err))
+        .then((user) =>
+          res.status(201).send({ message: 'Usuario creado con éxito', user })
+        )
+        .catch((err) => console.error(err))
       },
+
       login(req, res) {
         User.findOne({ where: { id: req.body.id } }).then((user) => {
           if (!user) {
@@ -29,6 +30,17 @@ const UserController = {
           res.send({menssage:'Bienvenid@ ' + user.name})
         })
       },
+
+      getAll(req, res) {
+        User.findAll()
+           .then((users) => res.send(users))
+           .catch((err) => {
+           console.log(err)
+           res.status(500).send({
+                message: 'Ha habido un problema al cargar los usuarios',
+               })
+           })
+       },
 
       getHistoryOf(req,res){
         User.findOne({

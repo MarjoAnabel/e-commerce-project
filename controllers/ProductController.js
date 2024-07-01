@@ -51,7 +51,7 @@ const ProductController = {
         Product.findByPk(req.params.id, {
           where: { id: req.params.id },
         }).then((product) => res.send(product))
-      },
+    },
 
     getOneByName(req, res) {
         Product.findOne({

@@ -1,10 +1,11 @@
 const express = require('express')
 const router = express.Router()
 const UserController = require('../controllers/UserController')
-const { authentication, isAdmin } = require('../middleware/authentication')
+const { authentication } = require('../middleware/authentication')
 
 
 router.post ('/', UserController.create)
+router.get('/', UserController.getAll)
 router.get ('/dni/:dni', UserController.getHistoryOf)
 router.post ('/login', UserController.login)
 router.delete('/logout', authentication, UserController.logout) 
