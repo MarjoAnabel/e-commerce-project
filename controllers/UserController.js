@@ -69,7 +69,7 @@ const UserController = {
           await Token.destroy({
             where: {
               [Op.and]: [
-                { UserId: req.body.id  }, 
+                { id: req.body.id  }, 
                 { token: req.headers.authorization },
               ],
             },
@@ -77,7 +77,7 @@ const UserController = {
           res.send({ message: 'Desconectado con éxito' })
         } catch (error) {
           console.log(error)
-          res.status(500).send({ message: 'hubo un problema al tratar de desconectarte' })
+          res.status(500).send({ message: 'Hubo un problema al tratar de desconectarte' })
         }
       }
 }
