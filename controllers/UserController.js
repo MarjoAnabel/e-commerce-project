@@ -7,8 +7,12 @@ const { jwt_secret } = require('../config/config.json')['development']
 
 const UserController = {
     create(req, res) {
-        // req.body.role = 'user'
         const password = bcrypt.hashSync(req.body.password, 10)
+        User.findOne({ where: { name: req.body.name } }).then((user) => {
+          if (user) {
+            return res.status(400).send({ message: 'Introduzca otro nombre de usuario' })
+          }
+        })
         User.create({ ...req.body, password: password })
         .then((user) =>
           res.status(201).send({ message: 'Usuario creado con éxito', user })
@@ -17,15 +21,17 @@ const UserController = {
       },
 
       login(req, res) {
-        User.findOne({ where: { id: req.body.id } }).then((user) => {
+        User.findOne({ where: { name: req.body.name } }).then((user) => {
           if (!user) {
             return res.status(400).send({ message: 'Usuario o contraseña incorrectos' })
           }
           const isMatch = bcrypt.compareSync(req.body.password, user.password)
           if (!isMatch) {
-            return res.status(400).send({ message: 'Usuario o contraseña incorrectos' })
+            let a= req.body.password
+            let b= user.password
+            return res.status(400).send({ message: `Usuario o contraseña incorrectos  ${a} ${b}` })
           }
-          const token = jwt.sign({id:user.id}, jwt_secret)
+          const token = jwt.sign({name:user.name}, jwt_secret)
           Token.create ({token, UserId:user.id})
           res.send({menssage:'Bienvenid@ ' + user.name})
         })
