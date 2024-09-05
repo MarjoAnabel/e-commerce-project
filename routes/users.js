@@ -6,6 +6,7 @@ const { authentication } = require('../middleware/authentication')
 router.post ('/', UserController.create)
 router.get('/', UserController.getAll)
 router.get ('/dni/:dni', UserController.getHistoryOf)
+router.get ('/userLogin',authentication,UserController.getUserLogin)
 
 router.post ('/login', UserController.login)
 router.delete('/logout', authentication, UserController.logout) 

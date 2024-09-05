@@ -21,21 +21,38 @@ const UserController = {
       },
 
       login(req, res) {
-        User.findOne({ where: { name: req.body.name } }).then((user) => {
-          if (!user) {
-            return res.status(400).send({ message: 'Usuario o contraseña incorrectos' })
-          }
-          const isMatch = bcrypt.compareSync(req.body.password, user.password)
-          if (!isMatch) {
-            let a= req.body.password
-            let b= user.password
-            return res.status(400).send({ message: `Usuario o contraseña incorrectos  ${a} ${b}` })
-          }
-          const token = jwt.sign({name:user.name}, jwt_secret)
-          Token.create ({token, UserId:user.id})
-          res.send({menssage:'Bienvenid@ ' + user.name})
+        console.log('Datos recibidos:', req.body);
+        const { name, password } = req.body;
+    
+        // Verificar si 'name' y 'password' están definidos
+        if (!name || !password) {
+            return res.status(400).send({ message: 'Nombre de usuario y contraseña son requeridos' });
+        }
+    
+        User.findOne({ where: { name } }).then((user) => {
+            if (!user) {
+                return res.status(400).send({ message: 'Usuario o contraseña incorrectos' });
+            }
+    
+            const isMatch = bcrypt.compareSync(password, user.password);
+            if (!isMatch) {
+                return res.status(400).send({ message: 'Usuario o contraseña incorrectos' });
+            }
+    
+            // Generar el token JWT
+            const token = jwt.sign({ name: user.name }, jwt_secret);
+            Token.create({ token, UserId: user.id });
+    
+            // Enviar el token junto con el mensaje de bienvenida
+            res.send({
+                message: 'Bienvenid@ ' + user.name,
+                token: token // Incluimos el token en la respuesta
+            });
+        }).catch((error) => {
+            console.error('Error en la consulta:', error);
+            res.status(500).send({ message: 'Error interno del servidor' });
         })
-      },
+    },    
 
       getAll(req, res) {
         User.findAll()
@@ -68,6 +85,20 @@ const UserController = {
           }
           res.send(user);
         })
+      },
+
+      async getUserLogin(req, res) {
+        try {
+          const user = req.user;  // Obtener el usuario desde req.user, configurado por el middleware
+      
+          res.status(200).json({
+            message: 'Usuario loggeado con éxito',
+            user,  // Enviar la información del usuario autenticado
+          });
+        } catch (error) {
+          console.error('Error al obtener el usuario loggeado:', error);
+          res.status(500).json({ message: 'Error al obtener el usuario loggeado' });
+        }
       },
 
       async logout(req, res) {
