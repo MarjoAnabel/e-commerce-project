@@ -3,8 +3,11 @@ const app = express()
 app.use(express.json())
 
 const cors = require('cors')
-
 app.use(cors())
+
+const cloudinary = require('cloudinary').v2
+const { CloudinaryStorage } = require('multer-storage-cloudinary')
+const multer = require('multer')
 
 
 const PORT = 3000
