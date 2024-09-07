@@ -89,11 +89,11 @@ const UserController = {
 
       async getUserLogin(req, res) {
         try {
-          const user = req.user;  // Obtener el usuario desde req.user, configurado por el middleware
+          const user = req.user;  
       
           res.status(200).json({
             message: 'Usuario loggeado con éxito',
-            user,  // Enviar la información del usuario autenticado
+            user, 
           });
         } catch (error) {
           console.error('Error al obtener el usuario loggeado:', error);
@@ -103,10 +103,11 @@ const UserController = {
 
       async logout(req, res) {
         try {
+
           await Token.destroy({
             where: {
               [Op.and]: [
-                { id: req.body.id  }, 
+                { id: req.user.id  }, 
                 { token: req.headers.authorization },
               ],
             },
