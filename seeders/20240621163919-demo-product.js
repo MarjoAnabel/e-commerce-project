@@ -19,6 +19,14 @@ module.exports = {
           price: '169',
           stock: '100',
           CategoryId: '1',
+          images: JSON.stringify([
+            'https://res.cloudinary.com/dtgu0boi0/image/upload/v1725700190/e-commerce/kshtcsquoiwgkiylh2hu.jpg',
+            'https://res.cloudinary.com/dtgu0boi0/image/upload/v1725700190/e-commerce/s0fgsxcuoy76eth1hpwp.jpg',
+            'https://res.cloudinary.com/dtgu0boi0/image/upload/v1725700190/e-commerce/x53oy3vxfilxcnqf1wjl.jpg',
+            'https://res.cloudinary.com/dtgu0boi0/image/upload/v1725700190/e-commerce/d0y6x9bkgxbbovqeoxiu.webp',
+            'https://res.cloudinary.com/dtgu0boi0/image/upload/v1725700189/e-commerce/k2mh6jkcg1ak4iuii7e9.webp',
+            'https://res.cloudinary.com/dtgu0boi0/image/upload/v1725700189/e-commerce/lgikhitoextabhiqnnab.webp'
+          ]),
           createdAt: new Date(),
           updatedAt: new Date(),
         },
@@ -28,6 +36,9 @@ module.exports = {
           price: '119',
           stock: '100',
           CategoryId: '1',
+          images: JSON.stringify([
+            
+          ]),
           createdAt: new Date(),
           updatedAt: new Date(),
         },
@@ -37,6 +48,9 @@ module.exports = {
           price: '120',
           stock: '1',
           CategoryId: '2',
+          images: JSON.stringify([
+            
+          ]),
           createdAt: new Date(),
           updatedAt: new Date(),
         },
@@ -46,6 +60,9 @@ module.exports = {
           price: '80',
           stock: '100',
           CategoryId: '2',
+          images: JSON.stringify([
+            
+          ]),
           createdAt: new Date(),
           updatedAt: new Date(),
         },
@@ -55,6 +72,9 @@ module.exports = {
           price: '90',
           stock: '100',
           CategoryId: '3',
+          images: JSON.stringify([
+            
+          ]),
           createdAt: new Date(),
           updatedAt: new Date(),
         },
@@ -64,6 +84,9 @@ module.exports = {
           price: '120',
           stock: '100',
           CategoryId: '4',
+          images: JSON.stringify([
+            
+          ]),
           createdAt: new Date(),
           updatedAt: new Date(),
         },
@@ -73,6 +96,9 @@ module.exports = {
           price: '90',
           stock: '100',
           CategoryId: '5',
+          images: JSON.stringify([
+            
+          ]),
           createdAt: new Date(),
           updatedAt: new Date(),
         },
@@ -82,6 +108,9 @@ module.exports = {
           price: '80',
           stock: '100',
           CategoryId: '6',
+          images: JSON.stringify([
+            
+          ]),
           createdAt: new Date(),
           updatedAt: new Date(),
         }
@@ -95,5 +124,6 @@ module.exports = {
      * Example:
      * await queryInterface.bulkDelete('People', null, {});
      */
+    return queryInterface.bulkDelete('Products', null, {});
   }
 };
