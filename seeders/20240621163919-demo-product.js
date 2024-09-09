@@ -139,12 +139,12 @@ module.exports = {
           stock: '100',
           CategoryId: '6',
           images: JSON.stringify([
-            '',
-            '',
-            '',
-            '',
-            '',
-            ''
+            'https://res.cloudinary.com/dtgu0boi0/image/upload/v1725885871/e-commerce/OLD%20SKOOL/qk6i7sdygibhtirwr6hj.jpg',
+            'https://res.cloudinary.com/dtgu0boi0/image/upload/v1725885870/e-commerce/OLD%20SKOOL/nksoti9t5noxl5jvp222.jpg',
+            'https://res.cloudinary.com/dtgu0boi0/image/upload/v1725885870/e-commerce/OLD%20SKOOL/nekzrdemzn23yy74omfd.jpg',
+            'https://res.cloudinary.com/dtgu0boi0/image/upload/v1725885870/e-commerce/OLD%20SKOOL/jbyrfdzhxsbot0o7cigf.jpg',
+            'https://res.cloudinary.com/dtgu0boi0/image/upload/v1725885869/e-commerce/OLD%20SKOOL/qclsw9abfxklg3z9ezlt.jpg',
+            'https://res.cloudinary.com/dtgu0boi0/image/upload/v1725885871/e-commerce/OLD%20SKOOL/soiu6uscn5poksh7mciy.jpg'
           ]),
           createdAt: new Date(),
           updatedAt: new Date(),
