@@ -54,7 +54,12 @@ module.exports = {
           stock: '1',
           CategoryId: '2',
           images: JSON.stringify([
-            
+            'https://res.cloudinary.com/dtgu0boi0/image/upload/v1725883419/e-commerce/Samba%20Originals/v3nuibwo6yjgs0jaodwb.jpg',
+            'https://res.cloudinary.com/dtgu0boi0/image/upload/v1725883418/e-commerce/Samba%20Originals/duqi2y2sunqjrb2rfynd.jpg',
+            'https://res.cloudinary.com/dtgu0boi0/image/upload/v1725883419/e-commerce/Samba%20Originals/tvdobqzhcqmtbkiiatro.jpg',
+            'https://res.cloudinary.com/dtgu0boi0/image/upload/v1725883418/e-commerce/Samba%20Originals/xarwm2b5tmkfkanx0ybb.jpg',
+            'https://res.cloudinary.com/dtgu0boi0/image/upload/v1725883419/e-commerce/Samba%20Originals/ooek4pucirpisajccjvj.jpg',
+            'https://res.cloudinary.com/dtgu0boi0/image/upload/v1725883418/e-commerce/Samba%20Originals/ui40od2rsrqtxrqx6l9w.jpg',
           ]),
           createdAt: new Date(),
           updatedAt: new Date(),
