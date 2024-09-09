@@ -71,12 +71,12 @@ module.exports = {
           stock: '100',
           CategoryId: '2',
           images: JSON.stringify([
-            '',
-            '',
-            '',
-            '',
-            '',
-            ''
+            'https://res.cloudinary.com/dtgu0boi0/image/upload/v1725884635/e-commerce/Superstar%20Originals/bp2ogcxnmqf8uf5pk27i.png',
+            'https://res.cloudinary.com/dtgu0boi0/image/upload/v1725884635/e-commerce/Superstar%20Originals/gx9zljhfpzymuc8jnfxd.png',
+            'https://res.cloudinary.com/dtgu0boi0/image/upload/v1725884635/e-commerce/Superstar%20Originals/ej00tthvd2d0zewt3kq2.png',
+            'https://res.cloudinary.com/dtgu0boi0/image/upload/v1725884635/e-commerce/Superstar%20Originals/x25esulebvoeiwjeqjot.png',
+            'https://res.cloudinary.com/dtgu0boi0/image/upload/v1725884635/e-commerce/Superstar%20Originals/qdx1mmrnozzkhmrl7twd.png',
+            'https://res.cloudinary.com/dtgu0boi0/image/upload/v1725884636/e-commerce/Superstar%20Originals/snhxuttpccau19td5xxm.png'
           ]),
           createdAt: new Date(),
           updatedAt: new Date(),
