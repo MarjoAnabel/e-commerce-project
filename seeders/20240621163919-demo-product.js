@@ -37,7 +37,12 @@ module.exports = {
           stock: '100',
           CategoryId: '1',
           images: JSON.stringify([
-            
+            'https://res.cloudinary.com/dtgu0boi0/image/upload/v1725795396/e-commerce/Nike%20Air%20Force%201/wdmhtlcvl82wo0feqtyo.webp',
+            'https://res.cloudinary.com/dtgu0boi0/image/upload/v1725795395/e-commerce/Nike%20Air%20Force%201/bbf0oxn9wqmwbx5ew6tp.webp',
+            'https://res.cloudinary.com/dtgu0boi0/image/upload/v1725795395/e-commerce/Nike%20Air%20Force%201/o2sgxfa2ibeyuwet7wue.webp',
+            'https://res.cloudinary.com/dtgu0boi0/image/upload/v1725795395/e-commerce/Nike%20Air%20Force%201/q0jfa6w0zpz0peqxkitu.webp',
+            'https://res.cloudinary.com/dtgu0boi0/image/upload/v1725795395/e-commerce/Nike%20Air%20Force%201/g9wo7afjpxzbgqi1zxzg.webp',
+            'https://res.cloudinary.com/dtgu0boi0/image/upload/v1725795395/e-commerce/Nike%20Air%20Force%201/apmejtulb5pwcb36gtjr.webp',
           ]),
           createdAt: new Date(),
           updatedAt: new Date(),
