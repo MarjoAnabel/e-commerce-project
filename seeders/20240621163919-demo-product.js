@@ -122,12 +122,12 @@ module.exports = {
           stock: '100',
           CategoryId: '5',
           images: JSON.stringify([
-            '',
-            '',
-            '',
-            '',
-            '',
-            ''
+            'https://res.cloudinary.com/dtgu0boi0/image/upload/v1725885605/e-commerce/Classic%20Leather/fhzfy1a2oyeaccqoteks.png',
+            'https://res.cloudinary.com/dtgu0boi0/image/upload/v1725885604/e-commerce/Classic%20Leather/d97pbgxogxvouwk9vxp7.png',
+            'https://res.cloudinary.com/dtgu0boi0/image/upload/v1725885605/e-commerce/Classic%20Leather/vrz7gzkdn5i5js643phg.png',
+            'https://res.cloudinary.com/dtgu0boi0/image/upload/v1725885605/e-commerce/Classic%20Leather/fashycsrb1clkp37jcs3.png',
+            'https://res.cloudinary.com/dtgu0boi0/image/upload/v1725885605/e-commerce/Classic%20Leather/ac0fgri1veovruybizlt.png',
+            'https://res.cloudinary.com/dtgu0boi0/image/upload/v1725885605/e-commerce/Classic%20Leather/ytowl9taumkvjewe2r8q.png'
           ]),
           createdAt: new Date(),
           updatedAt: new Date(),
