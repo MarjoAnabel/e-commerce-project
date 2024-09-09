@@ -105,12 +105,12 @@ module.exports = {
           stock: '100',
           CategoryId: '4',
           images: JSON.stringify([
-            '',
-            '',
-            '',
-            '',
-            '',
-            ''
+            'https://res.cloudinary.com/dtgu0boi0/image/upload/v1725885370/e-commerce/530/myux5ch1wbih8abdsvaa.png',
+            'https://res.cloudinary.com/dtgu0boi0/image/upload/v1725885369/e-commerce/530/n5trmucxlxoh5g8g7oab.png',
+            'https://res.cloudinary.com/dtgu0boi0/image/upload/v1725885369/e-commerce/530/okmkwnsmsaq7exgxklxg.png',
+            'https://res.cloudinary.com/dtgu0boi0/image/upload/v1725885370/e-commerce/530/umapquemobziocl6dmer.png',
+            'https://res.cloudinary.com/dtgu0boi0/image/upload/v1725885371/e-commerce/530/cdndyebq4lqzd4ennh6x.png',
+            'https://res.cloudinary.com/dtgu0boi0/image/upload/v1725885371/e-commerce/530/uk1mdidawhqpxolh6fem.png'
           ]),
           createdAt: new Date(),
           updatedAt: new Date(),
