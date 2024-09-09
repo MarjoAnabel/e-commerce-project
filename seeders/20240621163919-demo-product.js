@@ -88,12 +88,12 @@ module.exports = {
           stock: '100',
           CategoryId: '3',
           images: JSON.stringify([
-            '',
-            '',
-            '',
-            '',
-            '',
-            ''
+            'https://res.cloudinary.com/dtgu0boi0/image/upload/v1725884948/e-commerce/Suede%20Classic/dmcyigxtibaaxe7hknp5.png',
+            'https://res.cloudinary.com/dtgu0boi0/image/upload/v1725884949/e-commerce/Suede%20Classic/lgwlhe2nplaloqfu47qw.png',
+            'https://res.cloudinary.com/dtgu0boi0/image/upload/v1725884948/e-commerce/Suede%20Classic/eenabw8brhjn172ff56k.png',
+            'https://res.cloudinary.com/dtgu0boi0/image/upload/v1725884949/e-commerce/Suede%20Classic/kd4jkwhuesf7oqqxjfxk.png',
+            'https://res.cloudinary.com/dtgu0boi0/image/upload/v1725885138/e-commerce/Suede%20Classic/jfyx8eviu6xxw4qngy7o.png',
+            'https://res.cloudinary.com/dtgu0boi0/image/upload/v1725885138/e-commerce/Suede%20Classic/zpfdklufruxkjcuq6osi.png'
           ]),
           createdAt: new Date(),
           updatedAt: new Date(),
